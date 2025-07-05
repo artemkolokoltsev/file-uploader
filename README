@@ -1,13 +1,26 @@
-Backend
+# File uploading dashboard
 
-Run app
-```
-cd backend
-dotnet build run
-```
+Clone the project and use the following commands to run it locally:
 
-Run app
+### **Frontend (Vite)**
 
-```
+```bash
+cd frontend
+npm install
 npm run dev
 ```
+
+---
+
+### **Backend (.NET)**
+
+```bash
+cd Backend/Backend
+dotnet build
+dotnet run
+```
+---
+
+
+* Backend running on: `http://localhost:5045`
+* Frontend running on: `http://localhost:5173`

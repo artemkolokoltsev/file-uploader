@@ -1,8 +1,8 @@
 using System.Text.Json;
-using Baackend.Models;
+using Backend.Models;
 using Microsoft.Azure.Cosmos;
 
-namespace Baackend;
+namespace Backend;
 
 public class CosmosDbService
 {

@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./Baackend/Baackend
+      dockerfile: Dockerfile
+    ports:
+      - "5001:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_BACKEND_API_URL: http://localhost:5001
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+    driver: bridge

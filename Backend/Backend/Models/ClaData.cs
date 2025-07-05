@@ -1,4 +1,4 @@
-namespace Baackend.Models;
+namespace Backend.Models;
 
 public class ClaData
 {

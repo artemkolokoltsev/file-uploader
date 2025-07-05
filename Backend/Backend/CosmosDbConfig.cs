@@ -1,4 +1,4 @@
-namespace Baackend;
+namespace Backend;
 
 public class CosmosDbConfig
 {
