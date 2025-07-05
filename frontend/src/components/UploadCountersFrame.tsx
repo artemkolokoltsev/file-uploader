@@ -3,6 +3,7 @@ import Draggable from 'react-draggable';
 import { Resizable } from 're-resizable';
 import UploadCounters from './UploadCounters';
 
+// Resizable Frame with Counters
 const UploadCountersFrame: React.FC = () => {
     const dragRef = useRef<HTMLDivElement>(null);
 
@@ -19,8 +20,8 @@ const UploadCountersFrame: React.FC = () => {
                     style={{ position: 'absolute' }}
                 >
                     <Resizable
-                        defaultSize={{ width: 600, height: 400 }}
-                        minWidth={300}
+                        defaultSize={{ width: 700, height: 200 }}
+                        minWidth={100}
                         minHeight={200}
                         maxWidth={window.innerWidth - 20}
                         maxHeight={window.innerHeight - 20}
@@ -36,11 +37,11 @@ const UploadCountersFrame: React.FC = () => {
                             },
                         }}
                     >
-                        <div className="bg-white text-center rounded-xl shadow-xl border border-gray-300 h-full w-full flex flex-col overflow-hidden">
-                            <div className="drag-handle bg-gray-100 px-4 py-2 border-b rounded-t-xl text-sm font-medium text-gray-700 cursor-move">
-                                Uploading Dashboard
+                        <div className="bg-white text-left rounded-xl shadow-xl h-full w-full flex flex-col overflow-hidden">
+                            <div className="drag-handle bg-indigo-600 p-4 py-2 rounded-t-xl text-sm font-medium text-white cursor-move">
+                                Files Upload Dashboard
                             </div>
-                            <div className="flex-1 overflow-auto p-4 no-drag">
+                            <div className="flex-1 overflow-auto p-4">
                                 <UploadCounters />
                             </div>
                             <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-gray-400 pointer-events-none rounded-br-xl" />

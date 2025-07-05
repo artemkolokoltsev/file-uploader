@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StatCard from './StatCard';
+import { UploadCloud, CheckCircle, XCircle, FileWarningIcon } from "lucide-react";
 
 type Item = {
     id: string;
@@ -8,6 +9,7 @@ type Item = {
     status: string[];
 };
 
+// Counters grid
 const UploadCounters: React.FC = () => {
     const [items, setItems] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
@@ -34,11 +36,19 @@ const UploadCounters: React.FC = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-            <StatCard title="Uploaded" count={allUploaded.length} />
-            <StatCard title="Valid" count={validFiles.length} />
-            <StatCard title="Proof" count={validNeedProof.length} />
-            <StatCard title="Failed" count={failed.length} color="text-red-600" />
+        <div className="p-4">
+            <div
+                className="grid gap-4"
+                style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(50px, 1fr))',
+                }}
+            >
+                <StatCard title="Uploaded" count={allUploaded.length} icon={UploadCloud} backgroundColor="bg-blue-500" />
+                <StatCard title="Valid" count={validFiles.length} icon={CheckCircle} backgroundColor="bg-green-400" />
+                <StatCard title="Proof" count={validNeedProof.length} icon={FileWarningIcon} backgroundColor="bg-yellow-400" />
+                <StatCard title="Failed" count={failed.length} icon={XCircle} backgroundColor="bg-red-400" />
+            </div>
         </div>
     );
 };
