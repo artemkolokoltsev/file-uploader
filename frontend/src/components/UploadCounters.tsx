@@ -14,14 +14,25 @@ const UploadCounters: React.FC = () => {
     const [items, setItems] = useState<Item[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const fetchData = async () => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/cosmos/mock`);
+            const data = await res.json();
+            setItems(data);
+            setLoading(false);
+
+        } catch (error) {
+            console.error("Failed to fetch data", error);
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        fetch('/api/cosmos/data')
-            .then((res) => res.json())
-            .then((data) => {
-                setItems(data);
-                setLoading(false);
-            })
-            .catch(() => setLoading(false));
+        fetchData();
+
+        const interval = setInterval(fetchData, 30_000);
+
+        return () => clearInterval(interval);
     }, []);
 
     const allUploaded = items.filter(item => item.ner?.parentId === '');
