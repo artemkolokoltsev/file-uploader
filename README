@@ -1,0 +1,13 @@
+Backend
+
+Run app
+```
+cd backend
+dotnet build run
+```
+
+Run app
+
+```
+npm run dev
+```

@@ -1,0 +1,362 @@
+[
+  {
+    "id": "item1",
+    "ner": {
+      "parentId": ""
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item2",
+    "ner": {
+      "parentId": "item1"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item3",
+    "ner": {
+      "parentId": "item1"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item4",
+    "ner": {
+      "parentId": "item1"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item5",
+    "ner": {
+      "parentId": ""
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item6",
+    "ner": {
+      "parentId": "item4"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "YELLOW"
+    ]
+  },
+  {
+    "id": "item7",
+    "ner": {
+      "parentId": "item3"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item8",
+    "ner": {
+      "parentId": "item7"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item9",
+    "ner": {
+      "parentId": "item5"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "YELLOW"
+    ]
+  },
+  {
+    "id": "item10",
+    "ner": {
+      "parentId": ""
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "YELLOW"
+    ]
+  },
+  {
+    "id": "item11",
+    "ner": {
+      "parentId": "item10"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item12",
+    "ner": {
+      "parentId": "item6"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item13",
+    "ner": {
+      "parentId": "item7"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item14",
+    "ner": {
+      "parentId": "item11"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "YELLOW"
+    ]
+  },
+  {
+    "id": "item15",
+    "ner": {
+      "parentId": ""
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item16",
+    "ner": {
+      "parentId": "item9"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "GREEN"
+    ]
+  },
+  {
+    "id": "item17",
+    "ner": {
+      "parentId": "item11"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "YELLOW"
+    ]
+  },
+  {
+    "id": "item18",
+    "ner": {
+      "parentId": "item10"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item19",
+    "ner": {
+      "parentId": "item9"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "GREEN"
+    ]
+  },
+  {
+    "id": "item20",
+    "ner": {
+      "parentId": ""
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item21",
+    "ner": {
+      "parentId": "item2"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "GREEN"
+    ]
+  },
+  {
+    "id": "item22",
+    "ner": {
+      "parentId": "item20"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "GREEN"
+    ]
+  },
+  {
+    "id": "item23",
+    "ner": {
+      "parentId": "item18"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "YELLOW"
+    ]
+  },
+  {
+    "id": "item24",
+    "ner": {
+      "parentId": "item3"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item25",
+    "ner": {
+      "parentId": ""
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item26",
+    "ner": {
+      "parentId": "item20"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item27",
+    "ner": {
+      "parentId": "item2"
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item28",
+    "ner": {
+      "parentId": "item16"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "RED"
+    ]
+  },
+  {
+    "id": "item29",
+    "ner": {
+      "parentId": "item23"
+    },
+    "cla": {
+      "fileClassification": "valid"
+    },
+    "status": [
+      "YELLOW"
+    ]
+  },
+  {
+    "id": "item30",
+    "ner": {
+      "parentId": ""
+    },
+    "cla": {
+      "fileClassification": "invalid"
+    },
+    "status": [
+      "YELLOW"
+    ]
+  }
+]

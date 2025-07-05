@@ -1,32 +1,43 @@
-namespace Baackend;
-
 using Microsoft.AspNetCore.Mvc;
+
+namespace Baackend;
 
 [ApiController]
 [Route("api/[controller]")]
 public class CosmosController : ControllerBase
 {
-    [HttpGet("data")]
-    public async Task<IActionResult> Explore()
-    {
-        var data = new[]
-        {
-            new
-            {
-                id = "abc123",
-                ner = new { parentId = "" },
-                cla = new { fileClassification = "valid" },
-                status = new[] { "GREEN", "YELLOW" }
-            },
-            new
-            {
-                id = "def456",
-                ner = new { parentId = "abc123" },
-                cla = new { fileClassification = "invalid" },
-                status = new[] { "RED" }
-            }
-        };
+    private readonly CosmosDbService _cosmos;
 
-        return Ok(data);
+    public CosmosController(CosmosDbService cosmos)
+    {
+        _cosmos = cosmos;
+    }
+
+    [HttpGet("data")]
+    public async Task<IActionResult> GetFromCosmos()
+    {
+        try
+        {
+            var items = await _cosmos.GetAllAsync();
+            return Ok(items);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = "Failed to fetch from Cosmos DB", details = ex.Message });
+        }
+    }
+
+    [HttpGet("mock")]
+    public async Task<IActionResult>  GetMock()
+    {
+        try
+        {
+            var items = await _cosmos.GetMocked();
+            return Ok(items);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = "Failed to fetch from Cosmos DB", details = ex.Message });
+        }
     }
 }
