@@ -46,6 +46,7 @@ const UploadCountersFrame: React.FC = () => {
                                 <UploadCounters
                                     onCategorySelect={setSelectedCategory}
                                     setItems={setItems}
+                                    selectedCategory={selectedCategory}
                                 />
                                 {selectedCategory && height > MIN_HEIGHT && (
                                     <FileTable items={items} category={selectedCategory} />

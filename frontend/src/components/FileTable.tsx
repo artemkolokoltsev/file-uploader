@@ -1,22 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import type { Item } from './types';
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import { filterItemsByCategory } from '../utils/filterByCategory';
 
 type Props = {
     items: Item[];
     category: string;
 };
 
-const FileTable: React.FC<Props> = ({ items }) => {
-    const roots = items.filter(i => i.ner?.parentId === '');
-    const getChildren = (parentId: string) =>
-        items.filter(i => i.ner?.parentId === parentId);
-
+const FileTable: React.FC<Props> = ({ items, category }) => {
     const [expandedParents, setExpandedParents] = useState<Record<string, boolean>>({});
 
     const toggleExpand = (id: string) => {
         setExpandedParents(prev => ({ ...prev, [id]: !prev[id] }));
     };
+
+    const roots = useMemo(
+        () => filterItemsByCategory(items, category),
+        [items, category]
+    );
+
+    const getChildren = (parentId: string) =>
+        items.filter(i => i.ner?.parentId === parentId);
 
     return (
         <div className="bg-white text-black rounded shadow overflow-auto max-h-[400px] border">
