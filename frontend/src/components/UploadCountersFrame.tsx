@@ -7,7 +7,7 @@ import FileTable from './FileTable';
 
 const UploadCountersFrame: React.FC = () => {
     const dragRef = useRef<HTMLDivElement>(null);
-    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState<string>('uploaded');
     const [items, setItems] = useState<Item[]>([]);
     const [height, setHeight] = useState<number>(500);
 
