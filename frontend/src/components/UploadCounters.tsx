@@ -32,9 +32,19 @@ const UploadCounters: React.FC<Props> = ({ onCategorySelect, setItems }) => {
     }, []);
 
     const allUploaded = items.filter(item => item.ner?.parentId === '');
-    const validFiles = items.filter(item => item.cla?.fileClassification === 'valid');
-    const validNeedProof = validFiles.filter(item => item.status?.includes('YELLOW'));
-    const failed = items.filter(item => item.status?.includes('RED'));
+
+    const validFiles = allUploaded.filter(
+        item => item.cla?.fileClassification === 'valid'
+    );
+
+    const validNeedProof = allUploaded.filter(
+        item => item.status?.some(s => s === 'YELLOW' || s === 'GREEN')
+    );
+
+    const failed = allUploaded.filter(
+        item => item.status?.some(s => s === 'RED')
+    );
+
 
     if (loading) {
         return <div className="text-center py-8 text-gray-500">Loading...</div>;
