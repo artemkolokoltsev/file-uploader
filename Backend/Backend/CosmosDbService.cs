@@ -6,7 +6,6 @@ namespace Backend;
 
 public class CosmosDbService
 {
-    private readonly CosmosClient _client;
     private readonly Container? _container;
     private readonly ILogger<CosmosDbService> _logger;
 
@@ -20,7 +19,8 @@ public class CosmosDbService
         if (string.IsNullOrWhiteSpace(config.Database))
             throw new ArgumentException("Cosmos DB database name is missing");
 
-        _client = new CosmosClient(config.ConnectionString);
+        var client = new CosmosClient(config.ConnectionString);
+        _container = client.GetContainer(config.Database, config.Container);
     }
 
     public async Task<IEnumerable<Item>> GetAllAsync(string query = "SELECT * FROM c")

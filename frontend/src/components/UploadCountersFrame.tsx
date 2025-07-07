@@ -1,28 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { Resizable } from 're-resizable';
 import UploadCounters from './UploadCounters';
+import type { Item } from './types';
+import FileTable from './FileTable';
 
-// Resizable Frame with Counters
 const UploadCountersFrame: React.FC = () => {
     const dragRef = useRef<HTMLDivElement>(null);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [items, setItems] = useState<Item[]>([]);
 
     return (
         <div className="absolute inset-0 overflow-hidden">
-            <Draggable
-                nodeRef={dragRef}
-                handle=".drag-handle"
-                bounds="parent"
-            >
-                <div
-                    ref={dragRef}
-                    className="absolute top-10 left-10 z-50"
-                    style={{ position: 'absolute' }}
-                >
+            <Draggable nodeRef={dragRef} handle=".drag-handle" bounds="parent">
+                <div ref={dragRef} className="absolute top-10 left-10 z-50">
                     <Resizable
-                        defaultSize={{ width: 700, height: 200 }}
-                        minWidth={100}
-                        minHeight={200}
+                        defaultSize={{ width: 800, height: 500 }}
+                        minWidth={300}
+                        minHeight={300}
                         maxWidth={window.innerWidth - 20}
                         maxHeight={window.innerHeight - 20}
                         enable={{ bottomRight: true }}
@@ -41,10 +36,15 @@ const UploadCountersFrame: React.FC = () => {
                             <div className="drag-handle bg-indigo-600 p-4 py-2 rounded-t-xl text-sm font-medium text-white cursor-move">
                                 Files Upload Dashboard
                             </div>
-                            <div className="flex-1 overflow-auto p-4">
-                                <UploadCounters />
+                            <div className="flex-1 overflow-auto p-4 space-y-4">
+                                <UploadCounters
+                                    onCategorySelect={setSelectedCategory}
+                                    setItems={setItems}
+                                />
+                                {selectedCategory && (
+                                    <FileTable items={items} category={selectedCategory} />
+                                )}
                             </div>
-                            <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-gray-400 pointer-events-none rounded-br-xl" />
                         </div>
                     </Resizable>
                 </div>

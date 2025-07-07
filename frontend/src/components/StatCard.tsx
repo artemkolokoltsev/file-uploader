@@ -6,6 +6,7 @@ type StatCardProps = {
   count: string | number;
   icon: LucideIcon;
   backgroundColor: string;
+  onClick?: () => void;
 };
 
 // Stat Card with Counter
@@ -14,6 +15,7 @@ const StatCard: React.FC<StatCardProps> = ({
   count,
   icon: Icon,
   backgroundColor,
+  onClick
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [showDetails, setShowDetails] = useState(true);
@@ -32,6 +34,7 @@ const StatCard: React.FC<StatCardProps> = ({
 
   return (
     <div
+      onClick={onClick}
       ref={cardRef}
       className={`rounded-xl shadow p-4 h-24 flex items-stretch ${showDetails ? "justify-between" : "justify-center"
         } ${backgroundColor}`}
