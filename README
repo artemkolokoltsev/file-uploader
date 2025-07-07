@@ -1,8 +1,13 @@
 # File uploading dashboard
 
+## Dashboard to monitor uploading process
+COntains 4 counters to display status of uploading files. Solution provides visual status bar with table to display detailed files overview based on selected status.
+
+
+## Project setup
 Clone the project and use the following commands to run it locally:
 
-### **Frontend (Vite)**
+### Frontend (Vite)
 
 ```bash
 cd frontend
@@ -12,15 +17,27 @@ npm run dev
 
 ---
 
-### **Backend (.NET)**
+### Backend (Node)
+
+#### Set `.env` variables
+- in `.env`:
+
+```
+COSMOS_ENDPOINT=https://<cosmos-account>.documents.azure.com:443/
+COSMOS_KEY=<key>
+COSMOS_DB=<db-name>
+COSMOS_CONTAINER=<container-name>
+PORT=8080
+```
+
+#### Run
 
 ```bash
-cd Backend/Backend
-dotnet build
-dotnet run
+cd nodejs-backend
+node index.js
 ```
 ---
 
 
-* Backend running on: `http://localhost:5045`
+* Backend running on: `http://localhost:8080`
 * Frontend running on: `http://localhost:5173`
