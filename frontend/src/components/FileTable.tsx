@@ -15,11 +15,12 @@ const FileTable: React.FC<Props> = ({ items, category }) => {
     }[category] || [];
 
     return (
-        <div className="bg-white text-black border rounded shadow overflow-auto max-h-64">
+        <div className="bg-white text-black rounded shadow overflow-auto max-h-64">
             <table className="min-w-full text-sm">
                 <thead className="bg-gray-100">
                     <tr>
                         <th className="text-left p-2">ID</th>
+                        <th className="text-left p-2">File Name</th>
                         <th className="text-left p-2">Classification</th>
                         <th className="text-left p-2">Status</th>
                     </tr>
@@ -28,8 +29,9 @@ const FileTable: React.FC<Props> = ({ items, category }) => {
                     {filtered.map(file => (
                         <tr key={file.id} className="border-t hover:bg-gray-50">
                             <td className="p-2">{file.id}</td>
-                            <td className="p-2">{file.cla?.fileClassification}</td>
-                            <td className="p-2">{file.status?.join(', ')}</td>
+                            <td className="p-2">{file.rec?.fileName || '—'}</td>
+                            <td className="p-2">{file.cla?.fileClassification || '—'}</td>
+                            <td className="p-2">{file.status?.join(', ') || '—'}</td>
                         </tr>
                     ))}
                 </tbody>

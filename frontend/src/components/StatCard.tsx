@@ -7,6 +7,7 @@ type StatCardProps = {
   icon: LucideIcon;
   backgroundColor: string;
   onClick?: () => void;
+  selected?: boolean;
 };
 
 // Stat Card with Counter
@@ -34,10 +35,14 @@ const StatCard: React.FC<StatCardProps> = ({
 
   return (
     <div
-      onClick={onClick}
       ref={cardRef}
-      className={`rounded-xl shadow p-4 h-24 flex items-stretch ${showDetails ? "justify-between" : "justify-center"
-        } ${backgroundColor}`}
+      onClick={onClick}
+      className={`
+        rounded-xl shadow p-4 h-24 flex items-stretch transition-all duration-200
+        ${showDetails ? "justify-between" : "justify-center"}
+        ${backgroundColor}
+        cursor-pointer hover:brightness-110
+      `}
     >
       {showDetails && (
         <div className="flex flex-col justify-center gap-2 text-white">
@@ -45,7 +50,6 @@ const StatCard: React.FC<StatCardProps> = ({
           <span className="text-sm">{title}</span>
         </div>
       )}
-
       <div
         className={`flex items-center text-white font-semibold text-[5rem] h-full ${showDetails ? "ml-auto" : ""
           }`}

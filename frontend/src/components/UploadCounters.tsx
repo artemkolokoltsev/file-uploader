@@ -14,7 +14,7 @@ const UploadCounters: React.FC<Props> = ({ onCategorySelect, setItems }) => {
 
     const fetchData = async () => {
         try {
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/cosmos/mock`);
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/cosmos/data`);
             const data = await res.json();
             setLocalItems(data);
             setItems(data);
