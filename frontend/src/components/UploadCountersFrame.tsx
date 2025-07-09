@@ -43,11 +43,13 @@ const UploadCountersFrame: React.FC = () => {
                                 Files Upload Dashboard
                             </div>
                             <div className="flex-1 overflow-auto p-4 space-y-4">
+                                {/* Dispplay clickable counter components */}
                                 <UploadCounters
                                     onCategorySelect={setSelectedCategory}
                                     setItems={setItems}
                                     selectedCategory={selectedCategory}
                                 />
+                                {/* Display detailed file overview depending on counter selection */}
                                 {selectedCategory && height > MIN_HEIGHT && (
                                     <FileTable items={items} category={selectedCategory} />
                                 )}

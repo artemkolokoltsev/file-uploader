@@ -3,12 +3,15 @@ const router = express.Router();
 const client = require('../cosmosClient');
 require('dotenv').config();
 
+// Create DB client
 const db = client.database(process.env.COSMOS_DB);
+// Connect to container
 const container = db.container(process.env.COSMOS_CONTAINER);
 
-// GET
+// GET request, returns all data from cosmos db
 router.get('/files', async (req, res) => {
     try {
+        // Query all items from the Cosmos DB container
         const query = 'SELECT * FROM c';
         const { resources } = await container.items.query(query).fetchAll();
         res.json(resources);
@@ -18,7 +21,7 @@ router.get('/files', async (req, res) => {
     }
 });
 
-// POST
+// POST request to add new items
 router.post('/files', async (req, res) => {
     const items = req.body;
 

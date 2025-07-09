@@ -10,7 +10,7 @@ type StatCardProps = {
   selected?: boolean;
 };
 
-// Stat Card with Counter
+// Category Card component with Counter
 const StatCard: React.FC<StatCardProps> = ({
   title,
   count,
@@ -19,13 +19,17 @@ const StatCard: React.FC<StatCardProps> = ({
   onClick
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  // Set minimum width to disply title fo category and icon, otherwise only numbers with colored background
   const [showDetails, setShowDetails] = useState(true);
 
+  // On mount, observe the card element's size and toggle UI details based on its width.
+  // This enables responsive behavior (hiding title and icon).
   useEffect(() => {
     if (!cardRef.current) return;
 
     const observer = new ResizeObserver(([entry]) => {
       const width = entry.contentRect.width;
+      // Show details only if card is wider than 100px
       setShowDetails(width > 100);
     });
 

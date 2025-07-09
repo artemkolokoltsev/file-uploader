@@ -8,18 +8,23 @@ type Props = {
     category: string;
 };
 
+// Table component to display document details
 const FileTable: React.FC<Props> = ({ items, category }) => {
     const [expandedParents, setExpandedParents] = useState<Record<string, boolean>>({});
 
+    // Toggle to display children noes for parent file 
     const toggleExpand = (id: string) => {
         setExpandedParents(prev => ({ ...prev, [id]: !prev[id] }));
     };
 
+    // Memoize filtered items by selected category to avoid unnecessary recalculations
+    // Recomputes only when `items` or `category` change
     const roots = useMemo(
         () => filterItemsByCategory(items, category),
         [items, category]
     );
 
+    // Look up for the parent id, grouyp by parent id file
     const getChildren = (parentId: string) =>
         items.filter(i => i.ner?.parentId === parentId);
 

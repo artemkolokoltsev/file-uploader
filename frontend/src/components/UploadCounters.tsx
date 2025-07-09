@@ -11,15 +11,21 @@ type Props = {
 };
 
 const UploadCounters: React.FC<Props> = ({ onCategorySelect, setItems, selectedCategory }) => {
+    // Display loading during fetch process
     const [loading, setLoading] = useState(true);
+    // Set fetched items to display
     const [items, setLocalItems] = useState<Item[]>([]);
 
+    // Update data
     useEffect(() => {
+        // Define fetch method, get data from backend
         const fetchData = async () => {
             try {
                 const res = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/files`);
+                // Get json from response
                 const data = await res.json();
                 setLocalItems(data);
+                // Pass filtered items to the table view
                 setItems(data);
                 setLoading(false);
             } catch (error) {
@@ -28,7 +34,9 @@ const UploadCounters: React.FC<Props> = ({ onCategorySelect, setItems, selectedC
             }
         };
 
+        // Fetch call
         fetchData();
+        // Set interval to 30 sec, fetch every 30 seconds
         const interval = setInterval(fetchData, 30_000);
         return () => clearInterval(interval);
     }, [setItems]);
@@ -37,6 +45,11 @@ const UploadCounters: React.FC<Props> = ({ onCategorySelect, setItems, selectedC
         return <div className="text-center py-8 text-gray-500">Loading...</div>;
     }
 
+    // Define filtered categories:
+    //  uploaded => all files uploaded: Items where `ner.parentId == ""`. Card Background: Blue
+    //  valid => valid files uploaded: Items where `cla.fileClassification == "valid"`. Card Background: Green
+    //  proof => Valid files that need proof: Items where any `status` value equals "YELLOW". Card Background: Yellow
+    //  failed => Failed: Items where any `status` value equals "RED". Card Background: Red
     const uploaded = filterItemsByCategory(items, 'uploaded');
     const valid = filterItemsByCategory(items, 'valid');
     const proof = filterItemsByCategory(items, 'proof');
