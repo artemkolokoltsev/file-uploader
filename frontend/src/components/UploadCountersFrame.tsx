@@ -23,7 +23,7 @@ const UploadCountersFrame: React.FC = () => {
                         minHeight={MIN_HEIGHT}
                         maxWidth={window.innerWidth - 20}
                         maxHeight={window.innerHeight - 20}
-                        onResizeStop={(e, direction, ref) => {
+                        onResizeStop={(_, __, ref) => {
                             setHeight(ref.offsetHeight);
                         }}
                         enable={{ bottomRight: true }}
