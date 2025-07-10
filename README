@@ -1,7 +1,7 @@
 # File uploading dashboard
 
 ## Dashboard to monitor uploading process
-COntains 4 counters to display status of uploading files. Solution provides visual status bar with table to display detailed files overview based on selected status.
+Contains 4 counters to display status of uploading files. Solution provides visual status bar with table to display detailed files overview based on selected status.
 
 
 ## Project setup
@@ -33,7 +33,7 @@ PORT=8080
 #### Run
 
 ```bash
-cd nodejs-backend
+cd backend
 node index.js
 ```
 ---
